@@ -1,0 +1,394 @@
+%
+% Carátula para 75.02 / 95.11 Algoritmos y Programación I.
+%
+% Basado en el template realizado por Diego Essaya, disponible en
+%                                                         http://lug.fi.uba.ar
+% Modificado por Sebastián Santisi.
+% 2007: Modificado por Patricio Moreno y Michel Peterson.
+% 2014: Modificado por Patricio Moreno.
+% 2017: Modificado por Patricio Moreno.
+
+% Acá se define el tamaño de letra principal:
+% Para utilizar los estilos de KOMA-script, descomentar la línea siguiente y
+% comentar la que le sigue (dejar sin comentar un único documentclass)
+%\documentclass[10pt, spanish]{scrartcl}
+\documentclass[a4paper, 10pt, spanish]{article}
+\usepackage{color}
+\definecolor{cadet}{rgb}{0.33, 0.41, 0.47}
+\definecolor{orange}{rgb}{0.93, 0.53, 0.18}
+\definecolor{carminered}{rgb}{1.0, 0.0, 0.22}
+\definecolor{green}{rgb}{0.33, 0.42, 0.18}
+\definecolor{darkmagenta}{rgb}{0.55, 0.0, 0.55}
+\usepackage{anysize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CONFIGURACIONES GENERALES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definición del tamaño de página y los márgenes:
+% Si preferís menos márgenes, descomentá la línea siguiente
+%\usepackage[a4paper,headheight=16pt,scale={0.7,0.8},hoffset=0.5cm]{geometry}
+\usepackage{listings}
+
+\usepackage{babel}  % contiene la correcta separación en sílabas del español
+\usepackage[utf8x]{inputenc}    % porque el encoding del documento es UTF-8
+
+%
+% El paquete amsmath agrega algunas funcionalidades extra a las fórmulas.
+% Además defino la numeración de las tablas y figuras al estilo "Figura 2.3",
+% en lugar de "Figura 7". (Por lo tanto, aunque no uses fórmulas, si querés
+% este tipo de numeración dejá el paquete amsmath descomentado).
+%
+\usepackage{amsmath, amsfonts, amssymb}
+%\numberwithin{equation}{section}
+%\numberwithin{figure}{section}
+%\numberwithin{table}{section}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{pgfplots,filecontents}
+\pgfplotsset{compat=1.7}
+
+\begin{filecontents*}{mydata.dat}
+nodes     x         y       label
+1.0000    0.0000    3.3000  a
+2.0000     10.0000   5.0000 a
+3.0000     20.0000   7.4000 a
+4.0000     30.0000   10.5000 a
+5.0000     40.0000   14.0000 a
+6.0000    50.0000    19.3000 a
+7.0000    60.0000   24.5000 a
+8.0000     70.0000   31.5000 a
+9.0000    80.0000    38.5000 a
+10.0000    90.0000   48.0000 a
+11.0000    100.0000   57.0000 a
+12.0000    85.0000     43.1600  b
+13.0000     87.0000     44.8700  b
+%14.0000     89.0000     46.8700    b
+\end{filecontents*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ENCABEZADO y PIE DE PÁGINA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}   % Para poder personalizarlo
+\usepackage{lastpage}   % Para poder saber cuántas páginas tiene el documento
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markboth{}{\thesection\ \ #1}}
+\fancyhead{}	% Elimino el contenido del encabezado
+% Muestra la sección a la derecha (izquierda) en páginas impares (pares)
+\fancyhead[RO,LE]{\rightmark}
+% El siguiente texto a la derecha (izquierda) en páginas pares (impares)
+\fancyhead[RE,LO]{63.01 / 83.01 - Trabajo práctico \Nro~6}
+\fancyfoot{}	% Elimino el contenido del pie de página
+% A la izquierda (derecha) en páginas pares (impares): nro. de página / total
+\fancyfoot[LE,RO]{\thepage/\pageref{LastPage}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hipervínculos (enlaces) en el documento (y modificación de atributos)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{url}
+\urlstyle{tt}
+\usepackage[colorlinks=true,linkcolor=black, urlcolor=blue]{hyperref}
+\hypersetup{
+    breaklinks,
+    baseurl       = http://,
+    pdfborder     = 0 0 0,
+    pdfpagemode   = UseNone,
+    pdfstartpage  = 1,
+    pdfcreator    = {Plantilla de informe de TP para \LaTeX{}},
+    bookmarksopen = true,
+    bookmarksdepth= 2,% to show sections and subsections
+    pdfauthor     = {González, Arribas},
+    pdftitle      = {Analisis numérico I -- Trabajo práctico N\textsuperscript{o}~1},
+    pdfsubject    = {Informe},
+    pdfkeywords   = {}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{anysize}
+\usepackage{biblatex}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{courier}
+\usepackage{multirow}
+\usepackage{anysize}
+\usepackage{float}
+\usepackage{listings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LISTAS (para poder modificar los 'bullets' de las listas)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLAS (para que se vean bien)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{booktabs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMÁGENES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para incluir imágenes, el siguiente código carga el paquete graphicx
+% según se esté generando un archivo dvi o un pdf (con pdflatex).
+
+% Para generar dvi, descomentá la linea siguiente:
+%\usepackage[dvips]{graphicx}
+
+% Para generar pdf, descomentá las dos lineas seguientes:
+\usepackage{graphicx}
+\pdfcompresslevel=9
+
+% Todas las imágenes están en el directorio imgs:
+\newcommand{\imgdir}{imgs}
+\graphicspath{{\imgdir/}}
+
+\usepackage{listings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DIAGRAMAS DE FLUJO EN DIA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Necesitas este paquete si haces los diagramas de flujo en el programa Dia
+% y exportás a latex
+%\usepackage{tikz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INSERCIÓN DE CÓDIGO FUENTE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% El paquete recomendado actualmente es minted.
+% Documentación: https://www.ctan.org/pkg/minted
+%\usepackage[
+ %       section,    % Numera el código según la sección
+  %  ]{minted}
+% minted provee los comandos:
+% 1)  \mint[<opciones>]{<lenguaje>}<delimitador><código><delimitador>
+% 2)  \mintinline[<opciones>]{<lenguaje>}<delimitador><código><delimitador>
+% 3)  \inputminted[<opciones>]{<lenguaje>}{<archivo>}
+%\setminted[c]{
+%        style=,
+%        linenos,            % Mostrar los números de línea
+ %       numberfirstline,    % Numerar SIEMPRE la primera línea mostrada
+  %      tabsize=4,          % Reemplazar las tabulaciones por 4 espacios
+   %     autogobble          % Eliminar espacio sobrante al comienzo
+    }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COMANDOS UTILES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% los siguientes comandos permiten escribir de manera uniforme en todo el
+% documento
+
+% Para poder manejar los espacios al final de los comandos propios
+\usepackage{xspace}
+
+% Abreviatura de 'número' utilizando letras voladas (correcto español)
+\newcommand{\Nro}{N.\textsuperscript{o}\xspace}
+\newcommand{\nro}{n.\textsuperscript{o}\xspace}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INICIO DEL DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\marginsize{2cm}{2cm}{2cm}{2cm}
+%
+% Carátula:
+%
+\begin{titlepage}
+
+\thispagestyle{empty}
+
+\begin{center}
+\includegraphics[scale=0.3]{fiuba}\\
+\large{\textsc{Universidad de Buenos Aires}}\\
+\large{\textsc{Facultad de Ingeniería}}\\
+% Modificar año y cuatrimestre
+\small{Año 2018 - 1\textsuperscript{o} cuatrimestre}
+\end{center}
+
+\vfill
+
+\begin{center} % Modificar el código de ser necesario
+\Large{\underline{\textsc{Análisis numérico I (95.04)}}}
+\end{center}
+
+\vfill
+
+\begin{tabbing}
+\hspace{2cm}\=\+TRABAJO PRÁCTICO \Nro~1\\
+	TEMA:\textless{Propagación de errores}\textgreater{}\\
+	FECHA:\textless{}22-04-18\textgreater{}\\% \today\\
+\\
+	INTEGRANTES:\hspace{-1cm}\=\+\hspace{1cm}\=\hspace{6cm}\=\\
+		González, José Francisco	\>\>- \ 100063\\
+			\>\footnotesize{\verb!<josef-gonzalez@outlook.com>!}\\
+		Arribas, Guido Joel	\>\>- \ 98287\\
+			\>\footnotesize{\verb!<guidoarri96@gmail.com>!}\\
+		
+
+\end{tabbing}
+
+\vfill
+
+\hrule
+\vspace{0.2cm}
+
+% Modificar código de ser necesario
+\noindent\small{95.04 - Análisis numérico I \hfill }
+
+\end{titlepage}
+
+%
+% Hago que las páginas se comiencen a contar a partir de aquí:
+%
+\setcounter{page}{1}
+
+%
+% Pongo el índice en una página aparte:
+%
+\tableofcontents
+\newpage
+
+%
+% Inicio del TP:
+%
+\section{Objetivos}
+El objetivo de este trabajo práctico es estudiar la propagación de errores en distintas fórmulas equivalentes para la solución de una ecuación cuadrática.
+
+\section{Introducción}
+Se tiene que las raíces de una ecuación de segundo grado $ax^{2} + bx + c = 0$ con $a \neq 0$ y $b^{2} - 4ac > 0$ se pueden encontrar utilizando alguna de las siguientes expresiones:
+
+\begin{equation}
+x_{1} = \frac{-b + \sqrt{b^{2} - 4ac}}{2a}
+\end{equation}
+\begin{equation}
+x_{2} = \frac{-b + \sqrt{b^{2} - 4ac}}{2a}
+\end{equation}
+
+Se pueden obtener otras dos expresiones algebraicamente equivalentes operando de la siguiente manera, si las soluciones de $ax^{2} + bx + c = 0$ son las descriptas por (1) y (2), podemos tomar $ y = 1/x $ para obtener la ecuación $cy^{2} + by + a = 0$ cuyas soluciones serán:
+
+\begin{equation}
+y_{1,2} = \frac{-b + \sqrt{b^{2} \pm 4ac}}{2c} \nonumber
+\end{equation}
+\begin{equation}
+x_{1} = \frac{1}{y_{1}} = \frac{-2c}{b + \sqrt{b^{2}-4ac}} 
+\end{equation}
+\begin{equation}
+x_{2} = \frac{1}{y_{2}} = \frac{-2c}{b - \sqrt{b^{2}-4ac}} 
+\end{equation}
+
+Entonces, las fórmulas (3) y (4) son formas alternativas de (1) y (2). Nos interesa analizar como están condicionadas y si son estables cada una.
+
+\section{Propagación de errores}
+Estudiamos la incidencia que tienen los errores de redondeo en los resultados que entrega cada uno de los algoritmos. Para ello estudiamos el término de estabilidad del algoritmo, que nos permitirá establecer si los errores de redondeo tienen mucha incidencia en el error del resultado. Utilizamos la definición del error propagado total:
+
+\begin{equation}
+\epsilon(f) = \sum_{i=1}^n(Fa_{i}(\bar{x})\cdot \epsilon_{i}) + \epsilon_{rep},\ \ \  Fa_{i} = \frac{\bar{x_{i}}}{f(\bar{x})}\frac{\partial f}{\partial x_{i}}\right\vert_{\bar{x}}
+\end{equation}
+
+Tomando una cota para el error de representación propagado ($\mu$) se obtienen las siguientes cotas para los términos de estabilidad:
+
+\begin{equation}
+Te(x_{1}) = \frac{ \sqrt{b^{2} - 4ac}}{-b + \sqrt{b^{2} - 4ac}} \cdot (\frac{1}{2}  (\frac{b^2}{b^{2} - 4ac} - \frac{4ac}{b^{2} - 4ac} + 1 ) + 1 ) + 2
+\end{equation}
+
+\begin{equation}
+Te(x_{2}) = \frac{ \sqrt{b^{2} - 4ac}}{b + \sqrt{b^{2} - 4ac}} \cdot (\frac{1}{2}  (\frac{b^2}{b^{2} - 4ac} - \frac{4ac}{b^{2} - 4ac}) + \frac{3}{2} ) + 2
+\end{equation}
+
+\begin{equation}
+Te(x_{1(alt.)}) = -\frac{ \sqrt{b^{2} - 4ac}}{b + \sqrt{b^{2} - 4ac}} \cdot (\frac{1}{2}  (\frac{b^2}{b^{2} - 4ac} - \frac{4ac}{b^{2} - 4ac}) + \frac{3}{2} ) 
+\end{equation}
+
+\begin{equation}
+Te(x_{2(alt.)}) = \frac{ \sqrt{b^{2} - 4ac}}{b - \sqrt{b^{2} - 4ac}} \cdot (\frac{1}{2}  (\frac{b^2}{b^{2} - 4ac} - \frac{4ac}{b^{2} - 4ac}) + \frac{3}{2} ) 
+\end{equation}
+
+\subsection{Análisis de términos de estabilidad}
+
+\section{Simulación}
+Se utilizan las fórmulas (1,2,3 y 4) para obtener las raíces de las siguientes ecuaciones:
+\begin{equation}
+x^{2} - 1000,001x + 1 = 0 \nonumber
+\end{equation}
+\begin{equation}
+x^{2} - 10000,0001x + 1 = 0 \nonumber
+\end{equation}
+\begin{equation}
+x^{2} - 100000,00001x + 1 = 0 \nonumber
+\end{equation}
+\begin{equation}
+x^{2} - 1000000,000001x + 1 = 0 \nonumber
+\end{equation}
+Para ello se implementa un \textit{script} en Octave donde se le pasan los párámetros (a,b,c) a cada función previamente procesados por una función grilla (my\_grid.m) que aplica un redondeo simétrico con 3 dígitos significativos.
+
+\begin{figure}
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\lstinputlisting[languaje=octave]{my_grid.m}
+}%
+}\\
+\\
+\caption{Codigo en Octave para aplicar una grilla.}
+\end{figure}
+
+En los cuadros 1, 2 y 3 se muestran los resultados obtenidos con Octave para 2, 4 y 6 dígitos significativos respectivamente.
+
+\begin{table}
+\begin{center}
+  \begin{tabular}{ | l | l | l| l | p{3.5cm} |}
+    \hline
+    Ecuación   & $x_{1}                 $ &  x_{1(alt.)}          & x_{2}                   & x_{2(alt.)}         \\ \hline
+    $(a)     $ & 999.998999999000         &    999.998999978379   & 1.00000100002262e-03    & 1.00000100000200e-03\\ \hline
+    $(b)     $ & 9999.999899999999        &  9999.999888823369    & 1.00000001111766e-04    & 1.00000001000000e-04\\ \hline
+    $(c)     $ & 99999.999989999997       &  99999.966146435880   & 1.00000033853576e-05    & 1.00000000010000e-05\\ \hline
+    $(d)     $ & 999999.999998999876      &  999992.385564610013  & 1.00000761449337e-06    & 1.00000000000100e-06\\ \hline
+    
+    \end{tabular}
+\caption{Resultados para dos dígitos significativos}
+\end{center}
+\end{table} 
+
+\begin{table}
+\begin{center}
+  \begin{tabular}{ | l | l | l| l | p{3.5cm} |}
+    \hline
+    Ecuación   & $x_{1}                 $ &  x_{1(alt.)}          & x_{2}                   & x_{2(alt.)}         \\ \hline
+    $(a)     $ & 999.998999999000         &    999.998999978379   & 1.00000100002262e-03    & 1.00000100000200e-03\\ \hline
+    $(b)     $ & 9999.999899999999        &  9999.999888823369    & 1.00000001111766e-04    & 1.00000001000000e-04\\ \hline
+    $(c)     $ & 99999.999989999997       &  99999.966146435880   & 1.00000033853576e-05    & 1.00000000010000e-05\\ \hline
+    $(d)     $ & 999999.999998999992      &  999992.385564610013  & 1.00000761449337e-06    & 1.00000000000100e-06\\ \hline
+    
+    \end{tabular}
+\caption{Resultados para cuatro dígitos significativos}
+\end{center}
+\end{table}  
+
+\begin{table}
+\begin{center}
+  \begin{tabular}{ | l | l | l| l | p{3.5cm} |}
+    \hline
+    Ecuación   & $x_{1}                 $ &  x_{1(alt.)}          & x_{2}                   & x_{2(alt.)}         \\ \hline
+    $(a)     $ & 999.998999999000         &    999.998999978379   & 1.00000100002262e-03    & 1.00000100000200e-03\\ \hline
+    $(b)     $ & 9999.999899999999        &  9999.999888823369    & 1.00000001111766e-04    & 1.00000001000000e-04\\ \hline
+    $(c)     $ & 99999.999989999997       &  99999.966146435880   & 1.00000033853576e-05    & 1.00000000010000e-05\\ \hline
+    $(d)     $ & 999999.999998999992      &  999992.385564610013  & 1.00000761449337e-06    & 1.00000000000100e-06\\ \hline
+    
+    \end{tabular}
+\caption{Resultados para seis dígitos significativos}
+\end{center}
+\end{table}  
+
+
+
+
+\end{document}
